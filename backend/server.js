@@ -2,11 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import Product from "./models/product.model.js";
+import mongoose from "mongoose";
 
 dotenv.config();
 
 const app = express();
-app.use(express.json()); // allows us accclearess JSON data in req.body
+app.use(express.json()); // allows us access JSON data in req.body
 
 app.get("/api/products", async (req, res) => {
   try {
@@ -36,13 +37,13 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
-app.patch("api/products/:id", async (req, res) => {
+app.patch("/api/products/:id", async (req, res) => {
   const {id} = req.params;
 
   const product = req.body;
 
   if(!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ success: false, message: "Product not found/Product not found" });
+    return res.status(404).json({ success: false, message: "Invalid Product ID" });
   }
 
   try {
