@@ -37,7 +37,7 @@ app.post("/api/products", async (req, res) => {
   }
 });
 
-app.patch("/api/products/:id", async (req, res) => {
+app.put("/api/products/:id", async (req, res) => {
   const {id} = req.params;
 
   const product = req.body;
