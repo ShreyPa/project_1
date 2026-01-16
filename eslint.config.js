@@ -28,6 +28,7 @@ export default defineConfig([
       "react-refresh": pluginReactRefresh,
     },
     rules: {
+      "react/pop-types":"off",
       ...pluginReactHooks.configs.recommended.rules,
       ...pluginReactRefresh.configs.recommended.rules,
     },
